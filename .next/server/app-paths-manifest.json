@@ -1,0 +1,10 @@
+{
+  "/transacoes/page": "app/transacoes/page.js",
+  "/contas/page": "app/contas/page.js",
+  "/cartoes/page": "app/cartoes/page.js",
+  "/relatorios/page": "app/relatorios/page.js",
+  "/orcamentos/page": "app/orcamentos/page.js",
+  "/page": "app/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/categorias/page": "app/categorias/page.js"
+}

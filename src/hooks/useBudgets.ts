@@ -86,7 +86,7 @@ export function useBudgets() {
     setBudgets(prev => prev.filter(budget => budget.id !== id))
   }
 
-  // Obter progresso do orçamento
+  // Obter progresso do orçamento (existing function, not directly used by page.tsx for current month)
   const getBudgetProgress = async (budgetId: string) => {
     if (!profile?.couple_id) return null
 
@@ -131,6 +131,17 @@ export function useBudgets() {
     }
   }
 
+  // Nova função para obter o orçamento do mês atual
+  const getCurrentMonthBudget = (): BudgetWithCategories | undefined => {
+    const now = new Date()
+    const currentMonth = now.getMonth() + 1 // getMonth() is 0-indexed
+    const currentYear = now.getFullYear()
+
+    return budgets.find(
+      (budget) => budget.month === currentMonth && budget.year === currentYear
+    )
+  }
+
   useEffect(() => {
     if (profile?.couple_id) {
       fetchBudgets()
@@ -145,6 +156,7 @@ export function useBudgets() {
     updateBudget,
     deleteBudget,
     getBudgetProgress,
+    getCurrentMonthBudget, // Now correctly returned
     refetch: fetchBudgets,
   }
 }
